@@ -1,0 +1,6 @@
+@desafioExpenseControl_HostAddress = http://localhost:5019
+
+GET {{desafioExpenseControl_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

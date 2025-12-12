@@ -8,5 +8,7 @@ namespace ExpenseControl.Application.Interfaces
         Task<PessoaDto> CriarAsync(CreatePessoaDto dto);
         Task<List<PessoaDto>> ListarTodasAsync();        
         Task<List<PessoaTotaisDto>> ListarTotaisAsync();
+        Task DeletarAsync(int id);
+        Task<PessoaDto> ObterPorIdAsync(int id);
     }
 }

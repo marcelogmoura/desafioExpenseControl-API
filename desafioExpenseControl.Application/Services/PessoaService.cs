@@ -37,6 +37,20 @@ namespace ExpenseControl.Application.Services
             };
         }
 
+        public async Task DeletarAsync(int id)
+        {
+            var pessoa = await _pessoaRepository.GetByIdAsync(id);
+
+            if (pessoa == null)
+            {
+                throw new Exception("Pessoa não encontrada.");
+            }
+
+            //ao deletar a pessoa, o EF Core vai disparar o Cascade Delete 
+            //e apagar as transações dela automaticamente
+            await _pessoaRepository.DeleteAsync(pessoa);
+        }
+
         public async Task<List<PessoaDto>> ListarTodasAsync()
         {
             var pessoas = await _pessoaRepository.GetAllAsync();
@@ -71,6 +85,23 @@ namespace ExpenseControl.Application.Services
             }
 
             return listaTotais;
+        }
+
+        public async Task<PessoaDto> ObterPorIdAsync(int id)
+        {
+            var pessoa = await _pessoaRepository.GetByIdAsync(id);
+
+            if (pessoa == null)
+            {
+                throw new Exception("Pessoa não encontrada.");
+            }
+
+            return new PessoaDto
+            {
+                Id = pessoa.Id,
+                Nome = pessoa.Nome,
+                Idade = pessoa.Idade
+            };
         }
     }
 }

@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using desafioExpenseControl.Application.Dtos;
 using ExpenseControl.Application.DTOs;
 using ExpenseControl.Application.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ExpenseControl.API.Controllers
 {
@@ -27,6 +28,25 @@ namespace ExpenseControl.API.Controllers
             {
                 return BadRequest(new { error = ex.Message });
             }
+        }           
+
+        [HttpGet("{id}")]
+        [ProducesResponseType(typeof(PessoaDto), 200)]
+        [ProducesResponseType(404)]
+        public async Task<IActionResult> ObterPorId(int id)
+        {
+            try
+            {
+                var pessoa = await _pessoaService.ObterPorIdAsync(id);
+                return Ok(pessoa);
+            }
+            catch (Exception ex)
+            {                
+                if (ex.Message == "Pessoa não encontrada.")
+                    return NotFound(new { message = ex.Message });
+
+                return StatusCode(500, new { error = ex.Message });
+            }
         }
 
         [HttpGet]
@@ -43,5 +63,26 @@ namespace ExpenseControl.API.Controllers
             var result = await _pessoaService.ListarTotaisAsync();
             return Ok(result);
         }
+    
+        [HttpDelete("{id}")]
+        [ProducesResponseType(204)]  
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
+        public async Task<IActionResult> Deletar(int id)
+        {
+            try
+            {
+                await _pessoaService.DeletarAsync(id);
+                return Ok(new { message = "Pessoa deletada com sucesso!" });
+            }
+            catch (Exception ex)
+            {                
+                if (ex.Message == "Pessoa não encontrada.")
+                    return NotFound(new { message = ex.Message });
+
+                return StatusCode(500, new { error = ex.Message });
+            }
+        }
     }
+
 }

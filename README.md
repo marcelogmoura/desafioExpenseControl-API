@@ -59,7 +59,7 @@ Sistema completo de Gestão Financeira Pessoal desenvolvido como desafio técnic
 
 ## ✨ O FrontEnd (React) do projeto se encontra no link:
 
-[https://github.com/marcelogmoura/desafioTarget.API](https://github.com/marcelogmoura/desafioTarget.API)
+[https://github.com/marcelogmoura/desafioExpenseControl-UI](https://github.com/marcelogmoura/desafioExpenseControl-UI)
 
 
 ---

@@ -11,7 +11,7 @@
 
 # 💰 Expense Control
 
-Sistema completo de Gestão Financeira Pessoal desenvolvido como desafio técnico Full-Stack. O projeto permite gerenciar pessoas, categorias financeiras e lançamentos (receitas e despesas), com validações de regras de negócio no Back-end.
+Sistema completo de Gestão Financeira Pessoal desenvolvido como desafio técnico Full-Stack da empresa Maxiprod. O projeto permite gerenciar pessoas, categorias financeiras e lançamentos (receitas e despesas), com validações de regras de negócio no Back-end.
 
 ## 🚀 Tecnologias Utilizadas
 
